@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/allens-base/allens-base.iml" filepath="$PROJECT_DIR$/allens-base/allens-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/allens-spring/allens-spring.iml" filepath="$PROJECT_DIR$/allens-spring/allens-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/allens-test.iml" filepath="$PROJECT_DIR$/allens-test.iml" />
+    </modules>
+  </component>
+</project>

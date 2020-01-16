@@ -2,8 +2,6 @@
 * 第一、任务切分
 * 第二、结果合并
 
-<img src="https://upload-images.jianshu.io/upload_images/3047136-2044de505345b0a1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200"/>
-
 它的模型大致是这样的：线程池中的每个线程都有自己的工作队列（PS：这一点和ThreadPoolExecutor不同，ThreadPoolExecutor是所有线程公用一个工作队列，所有线程都从这个工作队列中取任务），当自己队列中的任务都完成以后，会从其它线程的工作队列中偷一个任务执行，这样可以充分利用资源。
 
 分治的原理上面已经介绍了，就是切割大任务成小任务来完成。看起来好像也不难实现啊！为什么专门弄一个新的框架呢？

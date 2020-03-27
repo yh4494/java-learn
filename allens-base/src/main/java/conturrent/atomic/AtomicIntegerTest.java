@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AtomicIntegerTest {
 
-    private static volatile int someNumber1 = 0;
+    private volatile int someNumber1 = 0;
 
     private static int someNumber2 = 0;
 
@@ -16,13 +16,14 @@ public class AtomicIntegerTest {
 
     private static CyclicBarrier cyclicBarrier = new CyclicBarrier(100);
 
-    private static int IncreaseInteger = 10000;
+    private static int IncreaseInteger = 1000;
 
     public static void main(String[] args) throws InterruptedException {
+        AtomicIntegerTest atomicIntegerTest = new AtomicIntegerTest();
         ExecutorService ex = Executors.newCachedThreadPool();
         for (int i = 0; i < IncreaseInteger; i ++) {
             ex.execute(() -> {
-                someNumber1 ++;
+                atomicIntegerTest.someNumber1 = atomicIntegerTest.someNumber1 + 1;
                 exeAwait();
             });
         }
@@ -42,7 +43,7 @@ public class AtomicIntegerTest {
         }
 
         Thread.sleep(2000);
-        System.out.println(someNumber1);
+        System.out.println(atomicIntegerTest.someNumber1);
         System.out.println(someNumber2);
         System.out.println(someNumber3);
         ex.shutdown();

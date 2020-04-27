@@ -19,6 +19,8 @@ public class LoginController {
         result.setCode("0");
         result.setMsg("返回成功");
         result.setData("HELLO STRANGER!");
+
+
         return result;
     }
 

@@ -37,6 +37,7 @@ public class JunitTest {
 
     @Test
     public void test2 () throws Exception {
+        Mockito.when(testService.testRequest(Mockito.anyString())).thenReturn("这是mock返回的数据");
         MvcResult result = mockMvc.perform(
                 MockMvcRequestBuilders.get("/test")
                         .contentType(MediaType.APPLICATION_JSON_UTF8)

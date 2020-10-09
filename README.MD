@@ -5,8 +5,8 @@
 * allens-base JAVA基础相关知识  
     - concurrent  
         - countdownlatch
-        - model            并发模型
-            - [forkjoin](https://github.com/yh4494/java-learn/tree/master/allens-base/src/main/java/conturrent/model/forkjoin)
+        - model.model            并发模型
+            - [forkjoin](https://github.com/yh4494/java-learn/tree/master/allens-base/src/main/java/conturrent/model.model/forkjoin)
         - queue
         - [aqs](https://github.com/yh4494/java-learn/blob/master/allens-base/src/main/java/conturrent/AQS.MD)
         - cas

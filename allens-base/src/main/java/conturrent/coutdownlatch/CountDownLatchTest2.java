@@ -11,13 +11,13 @@ import java.util.concurrent.Executors;
 /**
  * 底层使用CAS做控制
  */
-public class CountDownLatchTest {
+public class CountDownLatchTest2 {
 
     private static Integer cpu =  Runtime.getRuntime().availableProcessors() * 2;
 
     private static ConcurrentHashMap<Integer, Integer> concurrentHashMap = new ConcurrentHashMap();
 
-    private static CountDownLatch countDownLatch = new CountDownLatch(1000);
+    private static CountDownLatch countDownLatch = new CountDownLatch(1);
 
     @Data
     static class CustomRunable implements Runnable {
@@ -46,24 +46,21 @@ public class CountDownLatchTest {
                 .sum();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // 创建线程池
-        ExecutorService ex = null;
-        try {
-            ex = Executors.newFixedThreadPool(cpu);
-            for (int i = 500; i < 1000; i ++) {
-                ex.execute(new CustomRunable(i, i));
+        ExecutorService ex = Executors.newFixedThreadPool(5);
+        ex.execute(() -> {
+            for (int i = 50; i < 100; i ++) {
+                System.out.println(i);
+                countDownLatch.countDown();
             }
-            countDownLatch.await();
-            System.out.println(count());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            if (ex != null) {
-                ex.shutdown();
-            }
+        });
+        Thread.sleep(10);
+        for (int i = 0; i < 50; i ++) {
+            System.out.println(i);
         }
 
+        countDownLatch.await();
     }
 
 }

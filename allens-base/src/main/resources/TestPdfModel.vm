@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>测试</title>
+	<style type="text/css">
+		.container {
+			width: 100%;
+		}
+		* {
+		  font-family: '宋体';   //value是指定字体时 第二个参数
+		}
+	</style>
+</head>
+<body>
+	<div>$name</div>
+	<div>$title</div>
+	<div>$some</div>
+	<div>SOME JUST LIKE THIS</div>
+	<div class="container">
+		<div style="width: 33%; height: 30px; background: red; float: left;"></div>
+		<div style="width: 33%; height: 30px; background: blue; float: left;"></div>
+		<div style="width: 33%; height: 30px; background: green; float: left;"></div>
+	</div>
+</body>
+</html>

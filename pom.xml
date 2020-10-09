@@ -25,6 +25,9 @@
         <module>allens-base</module>
         <module>allens-spring</module>
         <module>common-utils</module>
+        <module>allens-kafka</module>
+        <module>allens-netty</module>
+        <module>allens-mybatis</module>
     </modules>
 
     <dependencies>

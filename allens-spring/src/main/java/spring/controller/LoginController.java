@@ -1,6 +1,7 @@
 package spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import spring.service.TestService;
@@ -13,6 +14,7 @@ public class LoginController {
     private TestService testService;
 
     @GetMapping("/test")
+    @Transactional
     public Result testReturn () {
         System.out.println(testService.testRequest("some"));
         Result<String> result = new Result<>();

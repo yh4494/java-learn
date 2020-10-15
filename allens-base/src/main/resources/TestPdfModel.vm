@@ -16,6 +16,7 @@
 	<div>$title</div>
 	<div>$some</div>
 	<div>SOME JUST LIKE THIS</div>
+	<img style="height: 70px;padding: 12px 58px;" src="/asdfdfsdsasd/logo.png" />
 	<div class="container">
 		<div style="width: 33%; height: 30px; background: red; float: left;"></div>
 		<div style="width: 33%; height: 30px; background: blue; float: left;"></div>

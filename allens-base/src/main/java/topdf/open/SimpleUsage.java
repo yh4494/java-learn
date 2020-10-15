@@ -34,7 +34,8 @@ public class SimpleUsage {
         testPdfModel.setSome("从倩");
         String template = templateProcess(testPdfModel);
 
-        try (OutputStream os = new FileOutputStream("/Users/allens/Documents/package/122112.pdf")) {
+//        try ()) {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             PdfRendererBuilder builder = new PdfRendererBuilder();
             builder.useFastMode();
             //下面这个方法是要自己指定 字体文件   不然转出的pdf文件中 中文会变成####
@@ -48,9 +49,15 @@ public class SimpleUsage {
                 return null;
             }, "宋体", 400, BaseRendererBuilder.FontStyle.NORMAL, true);
             builder.withHtmlContent(template, "");
+            File file = new File("/Users/allens/Documents/package/122112.pdf");
+            OutputStream os = new FileOutputStream(file);
             builder.toStream(os);
             builder.run();
-        }
+
+            byteArrayOutputStream.close();
+            os.close();
+            System.out.println("完成");
+//        }
     }
 
     /**

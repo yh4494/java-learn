@@ -1,4 +1,6 @@
 import com.alibaba.fastjson.JSON;
+import model.BusinessFeeStandardParam;
+import model.TestModel;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,12 +13,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import server.ServerInitializer;
+import spring.mapperstruct.BaseMapping;
 import spring.service.TestService;
 import spring.utils.Result;
+
+import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ServerInitializer.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -28,6 +32,9 @@ public class JunitTest {
 
     @Autowired
     protected MockMvc mockMvc;
+
+    @Resource
+    protected BaseMapping baseMapping;
 
     @Test
     public void Test1 () {
@@ -50,5 +57,13 @@ public class JunitTest {
         Assert.assertNotNull(map);
         Assert.assertTrue("失败了，因为字符串不相等", map.getData().equals("HELLO STRANGER!"));
 //         .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void testMapStruct () {
+        BusinessFeeStandardParam businessFeeStandardParam = new BusinessFeeStandardParam();
+        businessFeeStandardParam.setType("some");
+        TestModel testModel = baseMapping.sourceToTarget(businessFeeStandardParam);
+        System.out.println(testModel);
     }
 }
